@@ -89,6 +89,12 @@ public class Duke {
                         System.out.println("Got it. I've added this task: \n" + task);
                         System.out.println(String.format("Now you have %d tasks in the list.", list.size()));
                         break;
+                    case("delete"):
+                        int i = Integer.parseInt(s.split(" ")[1]) - 1;
+                        task = list.get(i);
+                        list.remove(i);
+                        System.out.println("Noted. I've removed this task: \n" + task+"\nNow you have "+list.size()+" tasks in the list.");
+                        break;
                     default:
                         throw new InvalidCommandException("☹ OOPS!!! I'm sorry, but I don't know what that means :-(");
                 }

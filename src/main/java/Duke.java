@@ -99,13 +99,4 @@ public class Duke {
             }
         }
     }
-    private static int tasksLeft(List<Task> list){
-        int result=0;
-        for(Task task : list){
-            if(!task.isDone()){
-                result++;
-            }
-        }
-        return result;
-    }
 }

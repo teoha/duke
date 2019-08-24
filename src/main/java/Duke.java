@@ -1,13 +1,47 @@
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.io.File;
+import java.io.FileWriter;
+import java.util.regex.Pattern;
 
 public class Duke {
-    public static void main(String[] args) throws InvalidCommandException,EmptyDescriptionException {
+    public static void main(String[] args) throws InvalidCommandException,EmptyDescriptionException, IOException {
         System.out.println("Hello! I'm Duke\nWhat can I do for you?");
+
         Scanner scanner = new Scanner(System.in);
         List<Task> list = new ArrayList<>();
         Task task;
+        FileWriter fileWriter=null;
+
+        try {
+            File file = new File("./data/duke.txt");
+            fileWriter = new FileWriter("./data/duke.txt",true);
+            Scanner fileScanner = new Scanner(file);
+            while(fileScanner.hasNextLine()){
+                String info = fileScanner.nextLine();
+                String[] infoArr = info.split(Pattern.quote("|"));
+                Task newTask;
+                if(infoArr[0].trim().equals("T")){
+                    newTask = new ToDo(infoArr[2].trim());
+                    if(infoArr[1].trim().equals("1"))newTask.setDone(true);
+                    list.add(newTask);
+                } else if(infoArr[0].trim().equals("D")){
+                    newTask = new Deadline(infoArr[2].trim(), infoArr[3].trim());
+                    if(infoArr[1].trim().equals("1"))newTask.setDone(true);
+                    list.add(newTask);
+                } else if(infoArr[0].trim().equals("E")){
+                    newTask = new Event(infoArr[2].trim(), infoArr[3].trim());
+                    if(infoArr[1].trim().equals("1"))newTask.setDone(true);
+                    list.add(newTask);
+                }
+            }
+        }catch (FileNotFoundException e){
+            System.out.println("File not found");
+        }
+
         while (scanner.hasNext()) {
             String s = scanner.nextLine();
             String[] strArr = s.split(" ");
@@ -16,6 +50,7 @@ public class Duke {
                 switch (strArr[0]) {
                     case ("bye"):
                         System.out.println("Bye. Hope to see you again soon!");
+                        fileWriter.close();
                         System.exit(0);
                     case ("list"):
                         System.out.println("Here are the tasks in your list:");
@@ -27,6 +62,7 @@ public class Duke {
                         int index = Integer.parseInt(s.split(" ")[1]) - 1;
                         task = list.get(index);
                         task.setDone(true);
+
                         System.out.println("Nice! I've marked this task as done: \n" + task);
                         break;
                     case ("todo"):
@@ -41,7 +77,9 @@ public class Duke {
                         list.add(task);
                         System.out.println("Got it. I've added this task: \n" + task);
                         System.out.println(String.format("Now you have %d tasks in the list.", list.size()));
-
+                        if(fileWriter!=null){
+                            fileWriter.write(String.format("\nT | 0 | %s", description));
+                        }
                         break;
                     case ("deadline"):
                         String date = "";
@@ -65,6 +103,10 @@ public class Duke {
                         list.add(task);
                         System.out.println("Got it. I've added this task: \n" + task);
                         System.out.println(String.format("Now you have %d tasks in the list.", list.size()));
+                        if(fileWriter!=null){
+                            fileWriter.write(String.format("\nD | 0 | %s | $s", description, date));
+                        }
+
                         break;
                     case ("event"):
                         String duration = "";
@@ -88,6 +130,9 @@ public class Duke {
                         list.add(task);
                         System.out.println("Got it. I've added this task: \n" + task);
                         System.out.println(String.format("Now you have %d tasks in the list.", list.size()));
+                        if(fileWriter!=null){
+                            fileWriter.write(String.format("\nE | 0 | %s | $s", description, duration));
+                        }
                         break;
                     case("delete"):
                         int i = Integer.parseInt(s.split(" ")[1]) - 1;
@@ -102,6 +147,8 @@ public class Duke {
                 System.out.println(e.getMessage());
             } catch (EmptyDescriptionException e){
                 System.out.println(e.getMessage());
+            } catch (IOException e){
+                System.out.println("Task was not saved");
             }
         }
     }

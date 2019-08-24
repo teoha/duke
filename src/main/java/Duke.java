@@ -1,9 +1,12 @@
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
 public class Duke {
-    public static void main(String[] args) throws InvalidCommandException,EmptyDescriptionException {
+    public static void main(String[] args) throws InvalidCommandException,EmptyDescriptionException, ParseException {
         System.out.println("Hello! I'm Duke\nWhat can I do for you?");
         Scanner scanner = new Scanner(System.in);
         List<Task> list = new ArrayList<>();
@@ -61,7 +64,8 @@ public class Duke {
                                 date += " ";
                             }
                         }
-                        task = new Deadline(description, date);
+                        Date deadlineDate = new SimpleDateFormat("dd/MM/yyyy hhmm").parse(date);
+                        task = new Deadline(description, deadlineDate);
                         list.add(task);
                         System.out.println("Got it. I've added this task: \n" + task);
                         System.out.println(String.format("Now you have %d tasks in the list.", list.size()));
@@ -84,7 +88,10 @@ public class Duke {
                                 duration += " ";
                             }
                         }
-                        task = new Event(description, duration);
+                        Date start = new SimpleDateFormat("dd/MM/yyyy hhmm").parse(duration.split("-")[0].trim());
+                        Date end = new SimpleDateFormat("dd/MM/yyyy hhmm").parse(duration.split("-")[1].trim());
+
+                        task = new Event(description, start, end);
                         list.add(task);
                         System.out.println("Got it. I've added this task: \n" + task);
                         System.out.println(String.format("Now you have %d tasks in the list.", list.size()));

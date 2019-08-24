@@ -1,13 +1,17 @@
-public class Event extends Task {
-    private String duration;
+import java.util.Date;
 
-    public Event(String description, String duration) {
+public class Event extends Task {
+    private Date start;
+    private Date end;
+
+    public Event(String description, Date start, Date end) {
         super(description);
-        this.duration = duration;
+        this.start = start;
+        this.end = end;
     }
 
     @Override
     public String toString() {
-        return String.format("[E]%s (at: %s)",super.toString(),duration);
+        return String.format("[E]%s (at: %s - %s)",super.toString(),start, end);
     }
 }

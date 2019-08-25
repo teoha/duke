@@ -10,6 +10,12 @@ public class Event extends Task {
         this.end = end;
     }
 
+    public String getDurationString() {
+        return String.format("%02d/%02d/%02d %02d%02d - %02d/%02d/%02d %02d%02d"
+                ,start.getDay(), start.getMonth(), start.getYear(), start.getHours(),start.getMinutes()
+                ,end.getDay(), end.getMonth(), end.getYear(), end.getHours(),end.getMinutes());
+    }
+
     @Override
     public String toString() {
         return String.format("[E]%s (at: %s - %s)",super.toString(),start, end);

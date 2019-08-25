@@ -113,7 +113,7 @@ public class Duke {
                         System.out.println("Got it. I've added this task: \n" + task);
                         System.out.println(String.format("Now you have %d tasks in the list.", list.size()));
                         if(fileWriter!=null){
-                            fileWriter.write(String.format("\nD | 0 | %s | $s", description, date));
+                            fileWriter.write(String.format("\nD | 0 | %s | %s", description, date));
                         }
 
                         break;
@@ -143,7 +143,7 @@ public class Duke {
                         System.out.println("Got it. I've added this task: \n" + task);
                         System.out.println(String.format("Now you have %d tasks in the list.", list.size()));
                         if(fileWriter!=null){
-                            fileWriter.write(String.format("\nE | 0 | %s | $s", description, duration));
+                            fileWriter.write(String.format("\nE | 0 | %s | %s", description, duration));
                         }
                         break;
                     case("delete"):

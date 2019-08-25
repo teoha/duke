@@ -1,3 +1,10 @@
+package duke.command;
+
+import duke.*;
+import duke.exception.EmptyDescriptionException;
+import duke.task.Deadline;
+import duke.task.Task;
+
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

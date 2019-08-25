@@ -1,3 +1,10 @@
+package duke.command;
+
+import duke.*;
+import duke.exception.EmptyDescriptionException;
+import duke.task.Task;
+import duke.task.ToDo;
+
 import java.io.IOException;
 
 public class AddTodoCommand extends AddCommand {
@@ -8,7 +15,7 @@ public class AddTodoCommand extends AddCommand {
     }
 
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) throws IOException, EmptyDescriptionException{
+    public void execute(TaskList tasks, Ui ui, Storage storage) throws IOException, EmptyDescriptionException {
         if (description.equals(""))
             throw new EmptyDescriptionException("☹ OOPS!!! The description of a todo cannot be empty.");
         Task task = new ToDo(description);

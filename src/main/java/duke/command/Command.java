@@ -1,3 +1,10 @@
+package duke.command;
+
+import duke.exception.EmptyDescriptionException;
+import duke.Storage;
+import duke.TaskList;
+import duke.Ui;
+
 import java.io.IOException;
 import java.text.ParseException;
 

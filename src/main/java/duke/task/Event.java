@@ -14,8 +14,8 @@ public class Event extends Task {
 
     public String getDurationString() {
         return String.format("%02d/%02d/%02d %02d%02d - %02d/%02d/%02d %02d%02d"
-                ,start.getDay(), start.getMonth(), start.getYear(), start.getHours(),start.getMinutes()
-                ,end.getDay(), end.getMonth(), end.getYear(), end.getHours(),end.getMinutes());
+                ,start.getDate(), start.getMonth(), start.getYear(), start.getHours(),start.getMinutes()
+                ,end.getDate(), end.getMonth(), end.getYear(), end.getHours(),end.getMinutes());
     }
 
     @Override

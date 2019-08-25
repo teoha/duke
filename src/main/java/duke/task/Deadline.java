@@ -11,7 +11,7 @@ public class Deadline extends Task{
     }
 
     public String getDateString() {
-        return String.format("%02d/%02d/%02d %02d%02d",date.getDay(), date.getMonth(), date.getYear(), date.getHours(),date.getMinutes());
+        return String.format("%02d/%02d/%02d %02d%02d",date.getDate(), date.getMonth(), date.getYear(), date.getHours(),date.getMinutes());
     }
 
     @Override

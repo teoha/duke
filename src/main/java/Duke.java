@@ -1,6 +1,11 @@
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 import java.io.File;
@@ -8,7 +13,8 @@ import java.io.FileWriter;
 import java.util.regex.Pattern;
 
 public class Duke {
-    public static void main(String[] args) throws InvalidCommandException,EmptyDescriptionException, IOException {
+
+    public static void main(String[] args) throws InvalidCommandException,EmptyDescriptionException, IOException,ParseException {
         System.out.println("Hello! I'm Duke\nWhat can I do for you?");
 
         Scanner scanner = new Scanner(System.in);
@@ -29,11 +35,13 @@ public class Duke {
                     if(infoArr[1].trim().equals("1"))newTask.setDone(true);
                     list.add(newTask);
                 } else if(infoArr[0].trim().equals("D")){
-                    newTask = new Deadline(infoArr[2].trim(), infoArr[3].trim());
+                    newTask = new Deadline(infoArr[2].trim(), new SimpleDateFormat("dd/MM/yyyy hhmm").parse(infoArr[3].trim()));
                     if(infoArr[1].trim().equals("1"))newTask.setDone(true);
                     list.add(newTask);
                 } else if(infoArr[0].trim().equals("E")){
-                    newTask = new Event(infoArr[2].trim(), infoArr[3].trim());
+                    String startDate = infoArr[3].split("-")[0].trim();
+                    String endDate = infoArr[3].split("-")[1].trim();
+                    newTask = new Event(infoArr[2].trim(), new SimpleDateFormat("dd/MM/yyyy hhmm").parse(startDate),new SimpleDateFormat("dd/MM/yyyy").parse(endDate));
                     if(infoArr[1].trim().equals("1"))newTask.setDone(true);
                     list.add(newTask);
                 }
@@ -99,7 +107,8 @@ public class Duke {
                                 date += " ";
                             }
                         }
-                        task = new Deadline(description, date);
+                        Date deadlineDate = new SimpleDateFormat("dd/MM/yyyy hhmm").parse(date);
+                        task = new Deadline(description, deadlineDate);
                         list.add(task);
                         System.out.println("Got it. I've added this task: \n" + task);
                         System.out.println(String.format("Now you have %d tasks in the list.", list.size()));
@@ -126,7 +135,10 @@ public class Duke {
                                 duration += " ";
                             }
                         }
-                        task = new Event(description, duration);
+                        Date start = new SimpleDateFormat("dd/MM/yyyy hhmm").parse(duration.split("-")[0].trim());
+                        Date end = new SimpleDateFormat("dd/MM/yyyy hhmm").parse(duration.split("-")[1].trim());
+
+                        task = new Event(description, start, end);
                         list.add(task);
                         System.out.println("Got it. I've added this task: \n" + task);
                         System.out.println(String.format("Now you have %d tasks in the list.", list.size()));

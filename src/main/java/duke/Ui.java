@@ -42,6 +42,9 @@ public class Ui {
     public void showLoadingError(){
         System.out.println("Cannot load file");
     }
+    public void showFindMessage(){
+        System.out.println("Here are the matching tasks in your list:");
+    }
     public String readCommand(){
         return scanner.nextLine();
     }

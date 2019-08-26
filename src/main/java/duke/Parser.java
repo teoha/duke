@@ -16,6 +16,9 @@ public class Parser {
             case ("done"):
                 int index = Integer.parseInt(fullCommand.split(" ")[1]) - 1;
                 return new DoneCommand(index);
+            case("find"):
+                String keyword = strArr[1].trim();
+                return new FindCommand(keyword);
             case ("todo"):
                 for (int i = 1; i < strArr.length; i++) {
                     description += strArr[i];

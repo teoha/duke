@@ -1,28 +1,27 @@
 package duke.command;
 
 import duke.Storage;
-import duke.task.Task;
 import duke.TaskList;
 import duke.Ui;
-
+import duke.task.Task;
 import java.io.IOException;
 
 public class DoneCommand extends Command {
-    int index;
+  int index;
 
-    public DoneCommand(int index) {
-        this.index = index;
-    }
+  public DoneCommand(int index) {
+    this.index = index;
+  }
 
-    @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) throws IOException {
-        Task task = tasks.getByIndex(index);
-        task.setDone(true);
-        ui.showDoneMessage(task);
-    }
+  @Override
+  public void execute(TaskList tasks, Ui ui, Storage storage) throws IOException {
+    Task task = tasks.getByIndex(index);
+    task.setDone(true);
+    ui.showDoneMessage(task);
+  }
 
-    @Override
-    public boolean isExit() {
-        return false;
-    }
+  @Override
+  public boolean isExit() {
+    return false;
+  }
 }

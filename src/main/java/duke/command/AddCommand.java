@@ -1,4 +1,3 @@
 package duke.command;
 
-public abstract class AddCommand extends Command  {
-}
+public abstract class AddCommand extends Command {}

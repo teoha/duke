@@ -1,10 +1,9 @@
 package duke.command;
 
-import duke.exception.EmptyDescriptionException;
 import duke.Storage;
 import duke.TaskList;
 import duke.Ui;
-
+import duke.exception.EmptyDescriptionException;
 import java.io.IOException;
 import java.text.ParseException;
 
@@ -21,7 +20,12 @@ public abstract class Command {
      * @throws EmptyDescriptionException Error when no description is provided
      * @throws ParseException Error when incorrect format for date is used
      */
-    public abstract void execute(TaskList tasks, Ui ui, Storage storage) throws IOException, EmptyDescriptionException, ParseException;
-    public abstract boolean isExit();
+  public abstract void execute(TaskList tasks, Ui ui, Storage storage)
+      throws IOException, EmptyDescriptionException, ParseException;
 
+    /**
+     * Tests if command is exit command
+     * @return Returns true if command is exit command
+     */
+  public abstract boolean isExit();
 }

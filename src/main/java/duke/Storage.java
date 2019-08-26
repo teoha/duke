@@ -96,7 +96,7 @@ public class Storage {
    * Saves an event task into the external file.
    * @param description Description of the task
    * @param duration Duration of the event detailing the start and end date
-   * @throws  Thrown if there is an error writing into file
+   * @throws  IOException Thrown if there is an error writing into file
    */
   public void saveEvent(String description, String duration) throws IOException {
     if (fileWriter != null) {

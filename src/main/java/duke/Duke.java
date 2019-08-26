@@ -2,6 +2,9 @@ package duke;
 
 import duke.command.Command;
 
+/**
+ * Starting point of the application.
+ */
 public class Duke {
     private Storage storage;
     private TaskList tasks;
@@ -18,6 +21,9 @@ public class Duke {
         }
     }
 
+    /**
+     * Initializes and executes the application.
+     */
     public void run() {
         ui.showWelcome();
         boolean isExit = false;

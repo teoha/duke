@@ -4,7 +4,19 @@ import duke.command.*;
 import duke.exception.EmptyDescriptionException;
 import duke.exception.InvalidCommandException;
 
+/**
+ * Parser contains the parse method which reads a command string and makes sense
+ *  of its contents.
+ */
 public class Parser {
+    /**
+     * Reads the user input, makes sense of the input and return the
+     * corresponding Command which the user intended.
+     * @param fullCommand String representation of the user input
+     * @return Command derived from understanding the user input
+     * @throws EmptyDescriptionException Thrown when does not include a description
+     * @throws InvalidCommandException Thrown when input string cannot be parsed
+     */
     public static Command parse(String fullCommand) throws EmptyDescriptionException, InvalidCommandException {
         String[] strArr = fullCommand.split(" ");
         String description = "";

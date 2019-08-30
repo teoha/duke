@@ -52,7 +52,7 @@ public class Storage {
                 newTask =
                         new Deadline(
                                 infoArr[2].trim(),
-                                new SimpleDateFormat("dd/MM/yyyy hhmm").parse(infoArr[3].trim()));
+                                new SimpleDateFormat("dd/MM/yyyy HHmm").parse(infoArr[3].trim()));
                 if (infoArr[1].trim().equals("1")) {
                     newTask.setDone(true);
                 }

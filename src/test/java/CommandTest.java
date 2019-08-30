@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 public class CommandTest {
     @Test
-    public void AddDeadLineCommandTest(){
+    public void addDeadLineCommandTest() {
         Assertions.assertEquals(false,new AddDeadlineCommand("description","date").isExit());
     }
 }

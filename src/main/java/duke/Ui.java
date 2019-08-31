@@ -90,7 +90,7 @@ public class Ui {
         System.out.println("Cannot load file");
     }
 
-    /** Prints message header for list in list of relavant results. */
+    /** Prints message header for list in list of relevant results. */
     public void showFindMessage() {
         System.out.println("Here are the matching tasks in your list:");
     }

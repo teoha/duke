@@ -1,6 +1,8 @@
 package duke;
 
 import duke.task.Task;
+
+import java.io.PrintStream;
 import java.util.Scanner;
 
 /** Provides methods to deal with all interactions with the user. */
@@ -102,5 +104,9 @@ public class Ui {
      */
     public String readCommand() {
         return scanner.nextLine();
+    }
+
+    public void switchStream(PrintStream ps) {
+        System.setOut(ps);
     }
 }

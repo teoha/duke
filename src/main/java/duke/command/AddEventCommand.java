@@ -34,8 +34,8 @@ public class AddEventCommand extends AddCommand {
     @Override
     public void execute(TaskList tasks, Ui ui, Storage storage)
             throws IOException, EmptyDescriptionException, ParseException {
-        Date start = new SimpleDateFormat("dd/MM/yyyy hhmm").parse(duration.split("-")[0].trim());
-        Date end = new SimpleDateFormat("dd/MM/yyyy hhmm").parse(duration.split("-")[1].trim());
+        Date start = new SimpleDateFormat("dd/MM/yyyy HHmm").parse(duration.split("-")[0].trim());
+        Date end = new SimpleDateFormat("dd/MM/yyyy HHmm").parse(duration.split("-")[1].trim());
 
         Task task = new Event(description, start, end);
         tasks.add(task);

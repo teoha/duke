@@ -11,9 +11,18 @@ import duke.command.FindCommand;
 import duke.command.ListCommand;
 import duke.exception.EmptyDescriptionException;
 import duke.exception.InvalidCommandException;
+import duke.exception.UnknownStorageEntryException;
+import duke.task.Deadline;
+import duke.task.Event;
+import duke.task.Task;
+import duke.task.ToDo;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.regex.Pattern;
 
 /**
- * Parser contains the parse method which reads a command string and makes sense of its contents.
+ * Parser contains the parseUserInput method which reads a command string and makes sense of its contents.
  */
 public class Parser {
     /**
@@ -25,7 +34,7 @@ public class Parser {
      * @throws EmptyDescriptionException Thrown when does not include a description
      * @throws InvalidCommandException   Thrown when input string cannot be parsed
      */
-    public static Command parse(String fullCommand)
+    public static Command parseUserInput(String fullCommand)
             throws EmptyDescriptionException, InvalidCommandException {
         String[] strArr = fullCommand.split(" ");
         String description = "";
@@ -96,6 +105,48 @@ public class Parser {
         default:
             throw new InvalidCommandException(
                     "☹ OOPS!!! I'm sorry, but I don't know what that means :-(");
+        }
+    }
+
+    /**
+     * Reads and makes sense of storage input. Returns a task to be placed in
+     * task list.
+     *
+     * @param info Information string provided by storage.
+     * @return Task parsed
+     */
+    public static Task parseStorage(String info) throws ParseException, UnknownStorageEntryException {
+        String[] infoArr = info.split(Pattern.quote("|"));
+        Task newTask;
+        if (infoArr[0].trim().equals("T")) {
+            newTask = new ToDo(infoArr[2].trim());
+            if (infoArr[1].trim().equals("1")) {
+                newTask.setDone(true);
+            }
+            return newTask;
+        } else if (infoArr[0].trim().equals("D")) {
+            newTask =
+                    new Deadline(
+                            infoArr[2].trim(),
+                            new SimpleDateFormat("dd/MM/yyyy HHmm").parse(infoArr[3].trim()));
+            if (infoArr[1].trim().equals("1")) {
+                newTask.setDone(true);
+            }
+            return newTask;
+        } else if (infoArr[0].trim().equals("E")) {
+            String startDate = infoArr[3].split("-")[0].trim();
+            String endDate = infoArr[3].split("-")[1].trim();
+            newTask =
+                    new Event(
+                            infoArr[2].trim(),
+                            new SimpleDateFormat("dd/MM/yyyy HHmm").parse(startDate),
+                            new SimpleDateFormat("dd/MM/yyyy HHmm").parse(endDate));
+            if (infoArr[1].trim().equals("1")) {
+                newTask.setDone(true);
+            }
+            return newTask;
+        } else {
+            throw new UnknownStorageEntryException();
         }
     }
 }

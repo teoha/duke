@@ -34,7 +34,7 @@ public class AddDeadlineCommand extends AddCommand {
     @Override
     public void execute(TaskList tasks, Ui ui, Storage storage)
             throws IOException, EmptyDescriptionException, ParseException {
-        Date deadlineDate = new SimpleDateFormat("dd/MM/yyyy hhmm").parse(date);
+        Date deadlineDate = new SimpleDateFormat("dd/MM/yyyy HHmm").parse(date);
         Task task = new Deadline(description, deadlineDate);
         tasks.add(task);
         ui.showTaskAddedMessage(task, tasks);

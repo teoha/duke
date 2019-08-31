@@ -1,18 +1,15 @@
 package duke;
 
-import duke.task.Deadline;
-import duke.task.Event;
+import duke.exception.UnknownStorageEntryException;
 import duke.task.Task;
-import duke.task.ToDo;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.regex.Pattern;
 
 /** Deals with loading tasks from the file and saving tasks in the file. */
 public class Storage {
@@ -39,36 +36,10 @@ public class Storage {
         Scanner fileScanner = new Scanner(file);
 
         while (fileScanner.hasNextLine()) {
-            String info = fileScanner.nextLine();
-            String[] infoArr = info.split(Pattern.quote("|"));
-            Task newTask;
-            if (infoArr[0].trim().equals("T")) {
-                newTask = new ToDo(infoArr[2].trim());
-                if (infoArr[1].trim().equals("1")) {
-                    newTask.setDone(true);
-                }
-                tempTaskList.add(newTask);
-            } else if (infoArr[0].trim().equals("D")) {
-                newTask =
-                        new Deadline(
-                                infoArr[2].trim(),
-                                new SimpleDateFormat("dd/MM/yyyy HHmm").parse(infoArr[3].trim()));
-                if (infoArr[1].trim().equals("1")) {
-                    newTask.setDone(true);
-                }
-                tempTaskList.add(newTask);
-            } else if (infoArr[0].trim().equals("E")) {
-                String startDate = infoArr[3].split("-")[0].trim();
-                String endDate = infoArr[3].split("-")[1].trim();
-                newTask =
-                        new Event(
-                                infoArr[2].trim(),
-                                new SimpleDateFormat("dd/MM/yyyy HHmm").parse(startDate),
-                                new SimpleDateFormat("dd/MM/yyyy HHmm").parse(endDate));
-                if (infoArr[1].trim().equals("1")) {
-                    newTask.setDone(true);
-                }
-                tempTaskList.add(newTask);
+            try {
+                tempTaskList.add(Parser.parseStorage(fileScanner.nextLine()));
+            } catch (Exception e) {
+                continue;
             }
         }
 

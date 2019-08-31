@@ -55,6 +55,7 @@ public class Storage {
     public void saveTodo(String description) throws IOException {
         if (fileWriter != null) {
             fileWriter.write(String.format("\nT | 0 | %s", description));
+            fileWriter.close();
         }
     }
 
@@ -68,6 +69,7 @@ public class Storage {
     public void saveDeadLine(String description, String date) throws IOException {
         if (fileWriter != null) {
             fileWriter.write(String.format("\nD | 0 | %s | %s", description, date));
+            fileWriter.close();
         }
     }
 
@@ -81,6 +83,7 @@ public class Storage {
     public void saveEvent(String description, String duration) throws IOException {
         if (fileWriter != null) {
             fileWriter.write(String.format("\nE | 0 | %s | %s", description, duration));
+            fileWriter.close();
         }
     }
 

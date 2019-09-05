@@ -1,6 +1,5 @@
-package duke;
+package duke.util;
 
-import duke.exception.UnknownStorageEntryException;
 import duke.task.Task;
 
 import java.io.File;

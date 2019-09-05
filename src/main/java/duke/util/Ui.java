@@ -1,4 +1,4 @@
-package duke;
+package duke.util;
 
 import duke.task.Task;
 
@@ -79,7 +79,7 @@ public class Ui {
 
     /** Prints the welcome message when the application first starts up. */
     public void showWelcome() {
-        System.out.println("Hello! I'm duke.Duke\nWhat can I do for you?");
+        System.out.println("Hello! I'm Duke\nWhat can I do for you?");
     }
 
     /** Prints an empty line. */

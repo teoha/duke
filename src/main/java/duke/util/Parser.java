@@ -1,4 +1,4 @@
-package duke;
+package duke.util;
 
 import duke.command.AddDeadlineCommand;
 import duke.command.AddEventCommand;

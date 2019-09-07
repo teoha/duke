@@ -11,6 +11,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import static duke.util.Parser.parseDate;
+
 /** The AddEventCommandClass represents a command used to add events into the current list. */
 public class AddEventCommand extends AddCommand {
     private String description;
@@ -34,8 +36,8 @@ public class AddEventCommand extends AddCommand {
     @Override
     public void execute(TaskList tasks, Ui ui, Storage storage)
             throws IOException, EmptyDescriptionException, ParseException {
-        Date start = new SimpleDateFormat("dd/MM/yyyy HHmm").parse(duration.split("-")[0].trim());
-        Date end = new SimpleDateFormat("dd/MM/yyyy HHmm").parse(duration.split("-")[1].trim());
+        Date start = parseDate(duration.split("-")[0].trim());
+        Date end = parseDate(duration.split("-")[1].trim());
 
         Task task = new Event(description, start, end);
         tasks.add(task);

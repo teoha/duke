@@ -19,6 +19,7 @@ import duke.task.ToDo;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.regex.Pattern;
 
 /**
@@ -117,6 +118,7 @@ public class Parser {
      */
     public static Task parseStorage(String info) throws ParseException, UnknownStorageEntryException {
         String[] infoArr = info.split(Pattern.quote("|"));
+        String[] dateArr;
         Task newTask;
         if (infoArr[0].trim().equals("T")) {
             newTask = new ToDo(infoArr[2].trim());
@@ -125,22 +127,38 @@ public class Parser {
             }
             return newTask;
         } else if (infoArr[0].trim().equals("D")) {
+            dateArr = infoArr[3].trim().split("/");
+            assert Integer.parseInt(dateArr[1])<=12 : "Invalid Month";
+            assert Integer.parseInt(dateArr[0])<=31 : "Invalid Month";
+            assert Integer.parseInt(dateArr[2].substring(5,7))<24 : "Invalid Hours";
+            assert Integer.parseInt(dateArr[2].substring(7,9))<60 : "Invalid Minutes";
+
+            Date newDate = new SimpleDateFormat("dd/MM/yyyy HHmm").parse(infoArr[3].trim());
             newTask =
                     new Deadline(
                             infoArr[2].trim(),
-                            new SimpleDateFormat("dd/MM/yyyy HHmm").parse(infoArr[3].trim()));
+                            newDate);
             if (infoArr[1].trim().equals("1")) {
                 newTask.setDone(true);
             }
+
             return newTask;
         } else if (infoArr[0].trim().equals("E")) {
+            dateArr = infoArr[3].trim().split("/");
+            assert Integer.parseInt(dateArr[1])<=12 : "Invalid Month";
+            assert Integer.parseInt(dateArr[0])<=31 : "Invalid Month";
+            assert Integer.parseInt(dateArr[2].substring(5,7))<24 : "Invalid Hours";
+            assert Integer.parseInt(dateArr[2].substring(7,9))<60 : "Invalid Minutes";
+
             String startDate = infoArr[3].split("-")[0].trim();
             String endDate = infoArr[3].split("-")[1].trim();
+            Date newDurationStart = new SimpleDateFormat("dd/MM/yyyy HHmm").parse(startDate);
+            Date newDurationEnd = new SimpleDateFormat("dd/MM/yyyy HHmm").parse(endDate);
             newTask =
                     new Event(
                             infoArr[2].trim(),
-                            new SimpleDateFormat("dd/MM/yyyy HHmm").parse(startDate),
-                            new SimpleDateFormat("dd/MM/yyyy HHmm").parse(endDate));
+                            newDurationStart,
+                            newDurationEnd);
             if (infoArr[1].trim().equals("1")) {
                 newTask.setDone(true);
             }
@@ -148,5 +166,16 @@ public class Parser {
         } else {
             throw new UnknownStorageEntryException();
         }
+    }
+
+    /**
+     * Parses and a date in String format and returns it in java.util.Date
+     * format.
+     *
+     * @param date String representation of the date
+     * @return java.util.Date format of the date
+     */
+    public static Date parseDate(String date) throws ParseException{
+        return new SimpleDateFormat("dd/MM/yyyy HHmm").parse(date);
     }
 }

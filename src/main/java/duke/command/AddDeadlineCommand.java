@@ -11,6 +11,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import static duke.util.Parser.parseDate;
+
 /** Represents command to add a deadline task into task list which has yet to be executed. */
 public class AddDeadlineCommand extends AddCommand {
     private String description;
@@ -34,7 +36,7 @@ public class AddDeadlineCommand extends AddCommand {
     @Override
     public void execute(TaskList tasks, Ui ui, Storage storage)
             throws IOException, EmptyDescriptionException, ParseException {
-        Date deadlineDate = new SimpleDateFormat("dd/MM/yyyy HHmm").parse(date);
+        Date deadlineDate = parseDate(date);
         Task task = new Deadline(description, deadlineDate);
         tasks.add(task);
         ui.showTaskAddedMessage(task, tasks);

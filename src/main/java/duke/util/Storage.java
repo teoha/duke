@@ -1,5 +1,6 @@
 package duke.util;
 
+import duke.exception.UnknownStorageEntryException;
 import duke.task.Task;
 
 import java.io.File;
@@ -28,7 +29,7 @@ public class Storage {
      * @throws IOException Thrown when there is a problem with loading the file
      * @throws ParseException Thrown when date provided by user is in the wrong format
      */
-    public List<Task> load() throws IOException, ParseException {
+    public List<Task> load() throws IOException {
         List<Task> tempTaskList = new ArrayList<>();
         file = new File(filePath);
         fileWriter = new FileWriter(filePath, true);

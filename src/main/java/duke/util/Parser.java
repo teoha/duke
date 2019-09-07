@@ -128,10 +128,10 @@ public class Parser {
             return newTask;
         } else if (infoArr[0].trim().equals("D")) {
             dateArr = infoArr[3].trim().split("/");
-            assert Integer.parseInt(dateArr[1])<=12 : "Invalid Month";
-            assert Integer.parseInt(dateArr[0])<=31 : "Invalid Month";
-            assert Integer.parseInt(dateArr[2].substring(5,7))<24 : "Invalid Hours";
-            assert Integer.parseInt(dateArr[2].substring(7,9))<60 : "Invalid Minutes";
+            assert Integer.parseInt(dateArr[1]) <= 12 : "Invalid Month";
+            assert Integer.parseInt(dateArr[0]) <= 31 : "Invalid Month";
+            assert Integer.parseInt(dateArr[2].substring(5,7)) < 24 : "Invalid Hours";
+            assert Integer.parseInt(dateArr[2].substring(7,9)) < 60 : "Invalid Minutes";
 
             Date newDate = new SimpleDateFormat("dd/MM/yyyy HHmm").parse(infoArr[3].trim());
             newTask =
@@ -145,10 +145,10 @@ public class Parser {
             return newTask;
         } else if (infoArr[0].trim().equals("E")) {
             dateArr = infoArr[3].trim().split("/");
-            assert Integer.parseInt(dateArr[1])<=12 : "Invalid Month";
-            assert Integer.parseInt(dateArr[0])<=31 : "Invalid Month";
-            assert Integer.parseInt(dateArr[2].substring(5,7))<24 : "Invalid Hours";
-            assert Integer.parseInt(dateArr[2].substring(7,9))<60 : "Invalid Minutes";
+            assert Integer.parseInt(dateArr[1]) <= 12 : "Invalid Month";
+            assert Integer.parseInt(dateArr[0]) <= 31 : "Invalid Month";
+            assert Integer.parseInt(dateArr[2].substring(5,7)) < 24 : "Invalid Hours";
+            assert Integer.parseInt(dateArr[2].substring(7,9)) < 60 : "Invalid Minutes";
 
             String startDate = infoArr[3].split("-")[0].trim();
             String endDate = infoArr[3].split("-")[1].trim();
@@ -175,7 +175,7 @@ public class Parser {
      * @param date String representation of the date
      * @return java.util.Date format of the date
      */
-    public static Date parseDate(String date) throws ParseException{
+    public static Date parseDate(String date) throws ParseException {
         return new SimpleDateFormat("dd/MM/yyyy HHmm").parse(date);
     }
 }

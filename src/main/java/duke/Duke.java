@@ -30,8 +30,8 @@ public class Duke {
     Button sendButton;
     AnchorPane mainLayout;
     Scene scene;
-    private Image user = new Image(this.getClass().getResourceAsStream("/images/DaUser.png"));
-    private Image duke = new Image(this.getClass().getResourceAsStream("/images/DaDuke.png"));
+    private Image userImage = new Image(this.getClass().getResourceAsStream("/images/DaUser.png"));
+    private Image dukeImage = new Image(this.getClass().getResourceAsStream("/images/DaDuke.png"));
 
     public Duke() {
     }
@@ -78,10 +78,10 @@ public class Duke {
     }
 
     /**
-     * Returns response to a user input.
+     * Returns response to a userImage input.
      *
      * @param input User input
-     * @return String representation of the result of a user input
+     * @return String representation of the result of a userImage input
      */
     public String getResponse(String input) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();

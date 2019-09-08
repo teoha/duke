@@ -7,14 +7,14 @@ import java.util.List;
 /** Contains the task list and operations to manage tasks in the list. */
 public class TaskList {
 
-    private List<Task> taskList;
+    private List<Task> tasks;
 
-    public TaskList(List<Task> taskList) {
-        this.taskList = taskList;
+    public TaskList(List<Task> tasks) {
+        this.tasks = tasks;
     }
 
     public TaskList() {
-        this.taskList = new ArrayList<>();
+        this.tasks = new ArrayList<>();
     }
 
     /**
@@ -23,7 +23,7 @@ public class TaskList {
      * @param task Task to be added into the list.
      */
     public void add(Task task) {
-        taskList.add(task);
+        tasks.add(task);
     }
 
     /**
@@ -32,7 +32,7 @@ public class TaskList {
      * @param inputNum Index of item to remove as displayed to user.
      */
     public void delete(int inputNum) {
-        taskList.remove(inputNum - 1);
+        tasks.remove(inputNum - 1);
     }
 
     /**
@@ -42,7 +42,7 @@ public class TaskList {
      * @return Task denoted by index.
      */
     public Task getByIndex(int index) {
-        return taskList.get(index);
+        return tasks.get(index);
     }
 
     /**
@@ -51,6 +51,6 @@ public class TaskList {
      * @return Integer of total number of tasks in the list.
      */
     public int listSize() {
-        return taskList.size();
+        return tasks.size();
     }
 }

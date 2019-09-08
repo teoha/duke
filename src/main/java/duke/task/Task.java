@@ -36,7 +36,7 @@ public class Task {
      *
      * @return Returns true if task is completed.
      */
-    public boolean isDone() {
+    public boolean checkDone() {
         return isDone;
     }
 

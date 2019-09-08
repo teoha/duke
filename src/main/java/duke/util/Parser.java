@@ -20,6 +20,7 @@ import duke.task.ToDo;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import java.util.regex.Pattern;
 
 /**
@@ -128,12 +129,12 @@ public class Parser {
             return newTask;
         } else if (infoArr[0].trim().equals("D")) {
             dateArr = infoArr[3].trim().split("/");
-            assert Integer.parseInt(dateArr[1])<=12 : "Invalid Month";
-            assert Integer.parseInt(dateArr[0])<=31 : "Invalid Month";
-            assert Integer.parseInt(dateArr[2].substring(5,7))<24 : "Invalid Hours";
-            assert Integer.parseInt(dateArr[2].substring(7,9))<60 : "Invalid Minutes";
+            assert Integer.parseInt(dateArr[1]) <= 12 : "Invalid Month";
+            assert Integer.parseInt(dateArr[0]) <= 31 : "Invalid Day";
+            assert Integer.parseInt(dateArr[2].substring(5,7)) < 24 : "Invalid Hours";
+            assert Integer.parseInt(dateArr[2].substring(7,9)) < 60 : "Invalid Minutes";
 
-            Date newDate = new SimpleDateFormat("dd/MM/yyyy HHmm").parse(infoArr[3].trim());
+            Date newDate = new SimpleDateFormat("dd/MM/yyyy HHmm", Locale.getDefault()).parse(infoArr[3].trim());
             newTask =
                     new Deadline(
                             infoArr[2].trim(),
@@ -145,15 +146,15 @@ public class Parser {
             return newTask;
         } else if (infoArr[0].trim().equals("E")) {
             dateArr = infoArr[3].trim().split("/");
-            assert Integer.parseInt(dateArr[1])<=12 : "Invalid Month";
-            assert Integer.parseInt(dateArr[0])<=31 : "Invalid Month";
-            assert Integer.parseInt(dateArr[2].substring(5,7))<24 : "Invalid Hours";
-            assert Integer.parseInt(dateArr[2].substring(7,9))<60 : "Invalid Minutes";
+            assert Integer.parseInt(dateArr[1]) <= 12 : "Invalid Month";
+            assert Integer.parseInt(dateArr[0]) <= 31 : "Invalid Day";
+            assert Integer.parseInt(dateArr[2].substring(5,7)) < 24 : "Invalid Hours";
+            assert Integer.parseInt(dateArr[2].substring(7,9)) < 60 : "Invalid Minutes";
 
             String startDate = infoArr[3].split("-")[0].trim();
             String endDate = infoArr[3].split("-")[1].trim();
-            Date newDurationStart = new SimpleDateFormat("dd/MM/yyyy HHmm").parse(startDate);
-            Date newDurationEnd = new SimpleDateFormat("dd/MM/yyyy HHmm").parse(endDate);
+            Date newDurationStart = new SimpleDateFormat("dd/MM/yyyy HHmm", Locale.getDefault()).parse(startDate);
+            Date newDurationEnd = new SimpleDateFormat("dd/MM/yyyy HHmm", Locale.getDefault()).parse(endDate);
             newTask =
                     new Event(
                             infoArr[2].trim(),
@@ -175,7 +176,7 @@ public class Parser {
      * @param date String representation of the date
      * @return java.util.Date format of the date
      */
-    public static Date parseDate(String date) throws ParseException{
-        return new SimpleDateFormat("dd/MM/yyyy HHmm").parse(date);
+    public static Date parseDate(String date) throws ParseException {
+        return new SimpleDateFormat("dd/MM/yyyy HHmm", Locale.getDefault()).parse(date);
     }
 }

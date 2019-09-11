@@ -4,7 +4,9 @@ import duke.task.Task;
 import java.util.ArrayList;
 import java.util.List;
 
-/** Contains the task list and operations to manage tasks in the list. */
+/** Contains the {@link TaskList} and operations to manage {@link Task} in the list.
+ *  Operations include adding, deleting, getting by index, setting {@link Task}
+ */
 public class TaskList {
 
     private List<Task> tasks;
@@ -17,8 +19,12 @@ public class TaskList {
         this.tasks = new ArrayList<>();
     }
 
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
     /**
-     * Add a task into the list.
+     * Add a {@link Task} into the list.
      *
      * @param task Task to be added into the list.
      */
@@ -27,7 +33,7 @@ public class TaskList {
     }
 
     /**
-     * Remove a task from the list using its index as displayed.
+     * Remove a {@link Task} from the {@link TaskList} using its index as displayed.
      *
      * @param inputNum Index of item to remove as displayed to user.
      */
@@ -36,19 +42,19 @@ public class TaskList {
     }
 
     /**
-     * Returns a task from the task list by its index (starting from 0).
+     * Returns a {@link Task} from the {@link TaskList} by its index (starting from 0).
      *
      * @param index Index of item in the list
-     * @return Task denoted by index.
+     * @return {@link Task} denoted by index.
      */
     public Task getByIndex(int index) {
         return tasks.get(index);
     }
 
     /**
-     * Returns number of tasks in the list.
+     * Returns number of {@link Task} in the list.
      *
-     * @return Integer of total number of tasks in the list.
+     * @return Integer of total number of tasks in the {@link TaskList}.
      */
     public int listSize() {
         return tasks.size();

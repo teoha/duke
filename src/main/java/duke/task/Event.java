@@ -1,6 +1,7 @@
 package duke.task;
 
 import java.util.Date;
+import java.util.function.Function;
 
 /** Represents an event task. */
 public class Event extends Task {
@@ -38,6 +39,19 @@ public class Event extends Task {
                 end.getYear() + 1900,
                 end.getHours(),
                 end.getMinutes());
+    }
+
+    /**
+     * Returns a string formatted to style suitable for {@link duke.util.Storage}.
+     *
+     * @return String formatted for {@link duke.util.Storage}.
+     */
+    @Override
+    public String getStorageSyntax() {
+        int isDoneInteger = super.isDone ? 1 : 0;
+        return String.format("E | %d | %s | %s | %d", isDoneInteger, this.description,
+                this.getDurationString(), this.priority);
+
     }
 
     /**

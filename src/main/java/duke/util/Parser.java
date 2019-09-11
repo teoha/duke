@@ -8,7 +8,9 @@ import duke.command.DeleteCommand;
 import duke.command.DoneCommand;
 import duke.command.ExitCommand;
 import duke.command.FindCommand;
+import duke.command.ListByPriorityCommand;
 import duke.command.ListCommand;
+import duke.command.UpdatePriorityCommand;
 import duke.exception.EmptyDescriptionException;
 import duke.exception.InvalidCommandException;
 import duke.exception.UnknownStorageEntryException;
@@ -45,11 +47,16 @@ public class Parser {
             return new ExitCommand();
         case ("list"):
             return new ListCommand();
+        case ("prioritylist"):
+            return new ListByPriorityCommand();
+        case("setpriority"):
+            return new UpdatePriorityCommand(
+                    Integer.parseInt(strArr[1]) - 1, Integer.parseInt(strArr[2]));
         case ("done"):
             int index = Integer.parseInt(fullCommand.split(" ")[1]) - 1;
             return new DoneCommand(index);
         case ("find"):
-            String keyword = strArr[1].trim();
+            String keyword = fullCommand.substring(6).trim();
             return new FindCommand(keyword);
         case ("todo"):
             for (int i = 1; i < strArr.length; i++) {
@@ -126,6 +133,9 @@ public class Parser {
             if (infoArr[1].trim().equals("1")) {
                 newTask.setDone(true);
             }
+            if (infoArr.length > 3) {
+                newTask.setPriority(Integer.parseInt(infoArr[3].trim()));
+            }
             return newTask;
         } else if (infoArr[0].trim().equals("D")) {
             dateArr = infoArr[3].trim().split("/");
@@ -142,7 +152,9 @@ public class Parser {
             if (infoArr[1].trim().equals("1")) {
                 newTask.setDone(true);
             }
-
+            if (infoArr.length > 4) {
+                newTask.setPriority(Integer.parseInt(infoArr[4].trim()));
+            }
             return newTask;
         } else if (infoArr[0].trim().equals("E")) {
             dateArr = infoArr[3].trim().split("/");
@@ -162,6 +174,9 @@ public class Parser {
                             newDurationEnd);
             if (infoArr[1].trim().equals("1")) {
                 newTask.setDone(true);
+            }
+            if (infoArr.length > 4) {
+                newTask.setPriority(Integer.parseInt(infoArr[4].trim()));
             }
             return newTask;
         } else {

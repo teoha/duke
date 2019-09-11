@@ -2,6 +2,7 @@ package duke.util;
 
 import duke.exception.UnknownStorageEntryException;
 import duke.task.Task;
+import duke.task.ToDo;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -47,44 +48,21 @@ public class Storage {
     }
 
     /**
-     * Saves a to do task into the external file.
+     * Saves all {@link Task} in {@link TaskList} into the external file.
      *
-     * @param description Description of the task
-     * @throws IOException Thrown if there is an error writing into file
+     * @param tasks Current {@link TaskList} by user
+     * @throws IOException Thrown when {@link FileWriter} cannot write into file
      */
-    public void saveTodo(String description) throws IOException {
-        if (fileWriter != null) {
-            fileWriter.write(String.format("\nT | 0 | %s", description));
-            fileWriter.close();
+    public void saveTaskList(TaskList tasks) throws IOException {
+        fileWriter = new FileWriter(filePath); //Clears file
+        fileWriter = new FileWriter(filePath, true);
+        String input = "";
+        for (int i = 0; i < tasks.listSize(); i++) {
+            String taskTemp = "\n" + tasks.getByIndex(i).getStorageSyntax();
+            input += taskTemp;
         }
-    }
-
-    /**
-     * Saves a deadline task in to the external file.
-     *
-     * @param description Description of the task
-     * @param date Date of deadline
-     * @throws IOException Thrown if there is an error writing into file
-     */
-    public void saveDeadLine(String description, String date) throws IOException {
-        if (fileWriter != null) {
-            fileWriter.write(String.format("\nD | 0 | %s | %s", description, date));
-            fileWriter.close();
-        }
-    }
-
-    /**
-     * Saves an event task into the external file.
-     *
-     * @param description Description of the task
-     * @param duration Duration of the event detailing the start and end date
-     * @throws IOException Thrown if there is an error writing into file
-     */
-    public void saveEvent(String description, String duration) throws IOException {
-        if (fileWriter != null) {
-            fileWriter.write(String.format("\nE | 0 | %s | %s", description, duration));
-            fileWriter.close();
-        }
+        fileWriter.write(input);
+        fileWriter.close();
     }
 
     /**

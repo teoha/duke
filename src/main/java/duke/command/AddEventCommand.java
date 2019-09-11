@@ -24,7 +24,8 @@ public class AddEventCommand extends AddCommand {
     }
 
     /**
-     * Adds an event into task list.
+     * Adds an event into task list and saves the task list
+     *  into the external file.
      *
      * @param tasks Current list of tasks
      * @param ui UI being used
@@ -43,7 +44,7 @@ public class AddEventCommand extends AddCommand {
         tasks.add(task);
         ui.showTaskAddedMessage(task, tasks);
 
-        storage.saveEvent(description, duration);
+        storage.saveTaskList(tasks);
     }
 
     /**

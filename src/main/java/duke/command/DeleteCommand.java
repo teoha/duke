@@ -16,7 +16,8 @@ public class DeleteCommand extends Command {
     }
 
     /**
-     * Deletes a singular task from current task list.
+     * Deletes a singular task from current task list and updates the task
+     * list in the external file.
      *
      * @param tasks Current list of tasks
      * @param ui UI being used
@@ -31,6 +32,7 @@ public class DeleteCommand extends Command {
         Task task = tasks.getByIndex(index);
         tasks.delete(index);
         ui.showDeleteMessage(task, tasks);
+        storage.saveTaskList(tasks);
     }
 
     /**

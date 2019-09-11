@@ -16,7 +16,8 @@ public class AddTodoCommand extends AddCommand {
     }
 
     /**
-     * Adds a to do task into task list.
+     * Adds a to do task into task list and saves the task list into
+     * the external file.
      *
      * @param tasks Current list of tasks
      * @param ui UI being used
@@ -34,7 +35,8 @@ public class AddTodoCommand extends AddCommand {
         Task task = new ToDo(description);
         tasks.add(task);
         ui.showTaskAddedMessage(task, tasks);
-        storage.saveTodo(description);
+        storage.saveTaskList(tasks);
+
     }
 
     /**

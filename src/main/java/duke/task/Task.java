@@ -1,16 +1,41 @@
 package duke.task;
 
+import java.util.function.Function;
+
 /**
  * Parent class of all tasks. Tasks are identified by having a description and its completion
  * status.
  */
-public class Task {
+public abstract class Task implements Comparable<Task> {
     protected String description;
     protected boolean isDone;
+    protected int priority;
 
+    /**
+     * Abstract constructor that cannot be used to instantiate a {@link Task},
+     * can be inherited to initialise properties in {@link Task}.
+     *
+     * @param description Description of the task
+     */
     public Task(String description) {
         this.description = description;
         this.isDone = false;
+        this.priority = -1;
+    }
+
+    /**
+     * Returns a string formatted to style suitable for {@link duke.util.Storage}.
+     *
+     * @return String formatted for {@link duke.util.Storage}.
+     */
+    public abstract String getStorageSyntax();
+
+    public int getPriority() {
+        return priority;
+    }
+
+    public void setPriority(int priority) {
+        this.priority = priority;
     }
 
     /**
@@ -66,5 +91,10 @@ public class Task {
     @Override
     public String toString() {
         return String.format("[%s] %s", getStatusIcon(), description);
+    }
+
+    @Override
+    public int compareTo(Task o) {
+        return this.getPriority();
     }
 }

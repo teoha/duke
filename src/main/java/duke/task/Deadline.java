@@ -1,15 +1,23 @@
 package duke.task;
 
 import java.util.Date;
+import java.util.function.Function;
 
 /** Represents a deadline task. */
 public class Deadline extends Task {
     private Date date;
 
+    /**
+     * Creates a {@link Deadline} that comprises a {@link Date}.
+     *
+     * @param description Description of the {@link Deadline}
+     * @param date {@link Date} before which the task should be completed
+     */
     public Deadline(String description, Date date) {
         super(description);
         this.date = date;
     }
+
 
     /**
      * Returns the date of the deadline in numerical format.
@@ -24,6 +32,17 @@ public class Deadline extends Task {
                 date.getYear() + 1900,
                 date.getHours(),
                 date.getMinutes());
+    }
+
+    /**
+     * Returns a string formatted to style suitable for {@link duke.util.Storage}.
+     *
+     * @return String formatted for {@link duke.util.Storage}.
+     */
+    @Override
+    public String getStorageSyntax() {
+        int isDoneInteger = super.isDone ? 1 : 0;
+        return String.format("D | %d | %s | %s | %d", isDoneInteger, this.description, this.date, this.priority);
     }
 
     /**

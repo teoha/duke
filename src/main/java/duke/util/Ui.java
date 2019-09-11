@@ -28,7 +28,7 @@ public class Ui {
     }
 
     /**
-     * Prints an element in the list displayed to the user.
+     * Prints an element in the {@link TaskList} displayed to the user.
      *
      * @param task Task being processed
      * @param index Index of the task being processed
@@ -37,13 +37,23 @@ public class Ui {
         System.out.println((index + 1) + ". " + task);
     }
 
+    /**
+     * Prints an element in the {@link TaskList} ordered by priority.
+     *
+     * @param task Task being printed
+     * @param index Index of the task being printed
+     */
+    public void showPriorityListElement(Task task, int index) {
+        System.out.println((index + 1) + ". " + task + " | priority: " + task.getPriority());
+    }
+
     /** Prints the header of the list when requested by user. */
     public void showListHeader() {
         System.out.println("Here are the tasks in your list:");
     }
 
     /**
-     * Prints the message shown after a task is marked as done.
+     * Prints the message shown after a {@link Task} is marked as done.
      *
      * @param task Task being marked as done.
      */
@@ -52,7 +62,7 @@ public class Ui {
     }
 
     /**
-     * Prints message about the task and the size of task list after a task is added into the list.
+     * Prints message about the {@link Task} and the size of task list after a {@link Task} is added into the list.
      *
      * @param task Task being added to the list.
      * @param tasks List of tasks.
@@ -60,6 +70,15 @@ public class Ui {
     public void showTaskAddedMessage(Task task, TaskList tasks) {
         System.out.println("Got it. I've added this task: \n" + task);
         System.out.println(String.format("Now you have %d tasks in the list.", tasks.listSize()));
+    }
+
+    /**
+     * Prints message informing user of {@link Task} which priority has been updated.
+     *
+     * @param task {@link Task} which has its priority being updated.
+     */
+    public void showPrioritySetMessage(Task task) {
+        System.out.println("I've set the priority of this task: \n" + task);
     }
 
     /**
@@ -87,14 +106,21 @@ public class Ui {
         System.out.println();
     }
 
-    /** Prints the error message when file containing saved tasks cannot be loaded. */
+    /** Prints the error message when file containing saved task cannot be loaded. */
     public void showLoadingError() {
         System.out.println("Cannot load file");
     }
 
-    /** Prints message header for list in list of relevant results. */
+    /** Prints message header for list of relevant results by FindCommand. */
     public void showFindMessage() {
         System.out.println("Here are the matching tasks in your list:");
+    }
+
+    /**
+     * Prints message when {@link duke.command.FindCommand} fails.
+     */
+    public void showFindFailedMessage() {
+        System.out.println("There are no matching tasks in your list.");
     }
 
     /**
@@ -106,6 +132,12 @@ public class Ui {
         return scanner.nextLine();
     }
 
+    /**
+     * Switches the output {@link java.util.stream.Stream} to {@link PrintStream}
+     *  provided.
+     *
+     * @param ps {@link PrintStream} provided by user
+     */
     public void switchStream(PrintStream ps) {
         System.setOut(ps);
     }

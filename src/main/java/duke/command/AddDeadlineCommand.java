@@ -24,7 +24,8 @@ public class AddDeadlineCommand extends AddCommand {
     }
 
     /**
-     * Adds a deadline into the task list.
+     * Adds a deadline into the task list and saves the task list
+     *  into the external file.
      *
      * @param tasks Current list of tasks
      * @param ui UI being used
@@ -40,7 +41,7 @@ public class AddDeadlineCommand extends AddCommand {
         Task task = new Deadline(description, deadlineDate);
         tasks.add(task);
         ui.showTaskAddedMessage(task, tasks);
-        storage.saveDeadLine(description, date);
+        storage.saveTaskList(tasks);
     }
 
     /**

@@ -30,12 +30,12 @@ public class Event extends Task {
         return String.format(
                 "%02d/%02d/%04d %02d%02d - %02d/%02d/%04d %02d%02d",
                 start.getDate(),
-                start.getMonth(),
+                start.getMonth() + 1,
                 start.getYear() + 1900,
                 start.getHours(),
                 start.getMinutes(),
                 end.getDate(),
-                end.getMonth(),
+                end.getMonth() + 1,
                 end.getYear() + 1900,
                 end.getHours(),
                 end.getMinutes());

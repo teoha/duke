@@ -25,10 +25,11 @@ public class UpdatePriorityCommand extends Command {
      * @param storage Current storage in use
      */
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) {
+    public void execute(TaskList tasks, Ui ui, Storage storage) throws IOException {
         Task task = tasks.getByIndex(index);
         task.setPriority(priority);
-        ui.showPrioritySetMessage(task);
+        ui.showPrioritySetMessage(task, priority);
+        storage.saveTaskList(tasks);
     }
 
     /**

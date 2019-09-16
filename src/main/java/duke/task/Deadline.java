@@ -1,7 +1,6 @@
 package duke.task;
 
 import java.util.Date;
-import java.util.function.Function;
 
 /** Represents a deadline task. */
 public class Deadline extends Task {
@@ -28,7 +27,7 @@ public class Deadline extends Task {
         return String.format(
                 "%02d/%02d/%04d %02d%02d",
                 date.getDate(),
-                date.getMonth(),
+                date.getMonth() + 1,
                 date.getYear() + 1900,
                 date.getHours(),
                 date.getMinutes());
@@ -42,7 +41,8 @@ public class Deadline extends Task {
     @Override
     public String getStorageSyntax() {
         int isDoneInteger = super.isDone ? 1 : 0;
-        return String.format("D | %d | %s | %s | %d", isDoneInteger, this.description, this.date, this.priority);
+        return String.format("D | %d | %s | %s | %d", isDoneInteger,
+                this.description, this.getDateString(), this.priority);
     }
 
     /**

@@ -28,7 +28,7 @@ public class ListByPriorityCommand extends Command {
             }
         }
         sortedList.sort((t1,t2) -> t1.getPriority() - t2.getPriority());
-        ui.showListHeader();
+        ui.showPriorityListHeader();
         for (int i = 0; i < sortedList.size(); i++) {
             ui.showPriorityListElement(sortedList.get(i), i);
         }

@@ -52,6 +52,11 @@ public class Ui {
         System.out.println("Here are the tasks in your list:");
     }
 
+    /** Prints the header of the priority list when requested by user. */
+    public void showPriorityListHeader() {
+        System.out.println("Here are the tasks in your list with priority:");
+    }
+
     /**
      * Prints the message shown after a {@link Task} is marked as done.
      *
@@ -77,8 +82,8 @@ public class Ui {
      *
      * @param task {@link Task} which has its priority being updated.
      */
-    public void showPrioritySetMessage(Task task) {
-        System.out.println("I've set the priority of this task: \n" + task);
+    public void showPrioritySetMessage(Task task, int priority) {
+        System.out.println("I've set the priority of this task: \n" + task + " to " + priority);
     }
 
     /**

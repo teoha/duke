@@ -24,7 +24,7 @@ class TaskListTest {
         TaskList taskList = new TaskList();
         taskList.add(new ToDo("Test"));
         taskList.delete(1);
-        assertEquals(taskList.listSize(), 0);
+        assertEquals(0, taskList.listSize());
     }
 
     @Test
@@ -38,6 +38,6 @@ class TaskListTest {
     void listSize() {
         TaskList taskList = new TaskList();
         taskList.add(new ToDo("Test"));
-        assertEquals(taskList.listSize(), 1);
+        assertEquals(1, taskList.listSize());
     }
 }

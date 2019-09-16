@@ -15,7 +15,7 @@ import java.io.IOException;
  */
 public class ListCommand extends Command {
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) throws IOException {
+    public void execute(TaskList tasks, Ui ui, Storage storage) {
         ui.showListHeader();
         for (int i = 0; i < tasks.listSize(); i++) {
             ui.showListElement(tasks.getByIndex(i), i);

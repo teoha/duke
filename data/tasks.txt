@@ -1,5 +1,6 @@
 
-T | 0 | sleep | 3
-T | 1 | eat again | 2
-T | 0 | sleep again | 1
 T | 0 | sleep again again | -1
+E | 0 | eat lunch | 24/02/2019 1000 - 24/02/2019 1100 | 2
+D | 0 | dispose trash | 12/08/2019 1200 | 1
+E | 0 | test | 10/09/2019 1010 - 10/09/2019 1011 | -1
+E | 0 | test | 10/10/2019 1010 - 10/10/2019 1111 | -1

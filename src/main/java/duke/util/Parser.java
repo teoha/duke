@@ -109,7 +109,7 @@ public class Parser {
             }
             return new AddEventCommand(description, duration);
         case ("delete"):
-            int i = Integer.parseInt(fullCommand.split(" ")[1]) - 1;
+            int i = Integer.parseInt(fullCommand.split(" ")[1]);
             return new DeleteCommand(i);
         default:
             throw new InvalidCommandException(

@@ -36,9 +36,10 @@ public class TaskList {
      * Remove a {@link Task} from the {@link TaskList} using its index as displayed.
      *
      * @param inputNum Index of item to remove as displayed to user.
+     * @return The {@link} task deleted.
      */
-    public void delete(int inputNum) {
-        tasks.remove(inputNum - 1);
+    public Task delete(int inputNum) {
+        return tasks.remove(inputNum - 1);
     }
 
     /**

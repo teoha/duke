@@ -23,15 +23,11 @@ public class DeleteCommand extends Command {
      * @param ui UI being used
      * @param storage Current storage in use
      * @throws IOException Error with accessing file or file writer
-     * @throws EmptyDescriptionException Error when no description is provided
-     * @throws ParseException Error when incorrect format for date is used
      */
     @Override
     public void execute(TaskList tasks, Ui ui, Storage storage)
-            throws IOException, EmptyDescriptionException, ParseException {
-        Task task = tasks.getByIndex(index);
-        tasks.delete(index);
-        ui.showDeleteMessage(task, tasks);
+            throws IOException {
+        ui.showDeleteMessage(tasks.delete(index), tasks);
         storage.saveTaskList(tasks);
     }
 

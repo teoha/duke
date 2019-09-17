@@ -19,10 +19,10 @@ public class AddTodoCommand extends AddCommand {
      * Adds a to do task into task list and saves the task list into
      * the external file.
      *
-     * @param tasks Current list of tasks
-     * @param ui UI being used
-     * @param storage Current storage in use
-     * @throws IOException Error with accessing file or file writer
+     * @param tasks Current {@link TaskList}
+     * @param ui {@link Ui} being used
+     * @param storage Current {@link Storage} in use
+     * @throws IOException Error with accessing file or {@link java.io.FileWriter}
      * @throws EmptyDescriptionException Error when no description is provided
      */
     @Override
@@ -42,7 +42,7 @@ public class AddTodoCommand extends AddCommand {
     /**
      * Tests Exit Command.
      *
-     * @return Whether command is an Exit Command
+     * @return Return true if {@link Command} is {@link ExitCommand}
      */
     @Override
     public boolean isExit() {

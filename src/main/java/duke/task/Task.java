@@ -39,7 +39,7 @@ public abstract class Task implements Comparable<Task> {
     }
 
     /**
-     * Returns the description of the task.
+     * Returns the description of the {@link Task}.
      *
      * @return a string describing the task.
      */
@@ -48,7 +48,7 @@ public abstract class Task implements Comparable<Task> {
     }
 
     /**
-     * Sets the description of the task to the given input.
+     * Sets the description of the {@link Task} to the given input.
      *
      * @param description User input of new description.
      */
@@ -57,7 +57,7 @@ public abstract class Task implements Comparable<Task> {
     }
 
     /**
-     * Returns completion status of the task.
+     * Returns completion status of the {@link Task}.
      *
      * @return Returns true if task is completed.
      */
@@ -66,7 +66,7 @@ public abstract class Task implements Comparable<Task> {
     }
 
     /**
-     * Sets the completion status of the task.
+     * Sets the completion status of the {@link Task}.
      *
      * @param done User input of new completion state.
      */
@@ -75,7 +75,7 @@ public abstract class Task implements Comparable<Task> {
     }
 
     /**
-     * Returns icon depicting completions status for the task.
+     * Returns icon depicting completions status for the {@link Task}.
      *
      * @return return tick or X symbols
      */
@@ -84,7 +84,7 @@ public abstract class Task implements Comparable<Task> {
     }
 
     /**
-     * Returns string representation of properties in the task.
+     * Returns string representation of properties in the {@link Task}.
      *
      * @return string representation of task properties.
      */

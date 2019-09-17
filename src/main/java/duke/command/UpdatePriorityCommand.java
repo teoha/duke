@@ -19,10 +19,10 @@ public class UpdatePriorityCommand extends Command {
     }
 
     /**
-     * Executes command to update the priority of a {@link Task}.
-     * @param tasks Current list of tasks
-     * @param ui UI being used
-     * @param storage Current storage in use
+     * Executes {@link Command} to update the priority of a {@link Task}.
+     * @param tasks Current {@link TaskList}
+     * @param ui {@link Ui} being used
+     * @param storage Current {@link Storage} in use
      */
     @Override
     public void execute(TaskList tasks, Ui ui, Storage storage) throws IOException {

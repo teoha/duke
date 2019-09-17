@@ -27,10 +27,10 @@ public class AddDeadlineCommand extends AddCommand {
      * Adds a deadline into the task list and saves the task list
      *  into the external file.
      *
-     * @param tasks Current list of tasks
-     * @param ui UI being used
-     * @param storage Current storage in use
-     * @throws IOException Error with accessing file or file writer
+     * @param tasks Current {@link TaskList}
+     * @param ui {@link Ui} being used
+     * @param storage Current {@link Storage} in use
+     * @throws IOException Error with accessing file or {@link java.io.FileWriter}
      * @throws EmptyDescriptionException Error when no description is provided
      * @throws ParseException Error when incorrect format for date is used
      */

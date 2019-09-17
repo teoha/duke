@@ -29,9 +29,9 @@ public class DoneCommand extends Command {
     }
 
     /**
-     * Tests if command is an Exit Command.
+     * Tests if {@link Command} is {@link ExitCommand}.
      *
-     * @return Whether command is Exit Command
+     * @return Return true if {@link Command} is {@link ExitCommand}
      */
     @Override
     public boolean isExit() {

@@ -11,13 +11,13 @@ import java.util.List;
 public class ListByPriorityCommand extends Command {
 
     /**
-     * Executes command to list all {@link Task} in {@link TaskList}
+     * Executes {@link Command} to list all {@link Task} in {@link TaskList}
      * by order of priority. Priorities with the smallest integer
      * value are placed on the top.
      *
-     * @param tasks Current list of tasks
-     * @param ui UI currently in use
-     * @param storage Current storage in use
+     * @param tasks Current {@link TaskList}
+     * @param ui {@link Ui} currently in use
+     * @param storage Current {@link Storage} in use
      */
     @Override
     public void execute(TaskList tasks, Ui ui, Storage storage) {

@@ -19,9 +19,9 @@ public class DeleteCommand extends Command {
      * Deletes a singular task from current task list and updates the task
      * list in the external file.
      *
-     * @param tasks Current list of tasks
-     * @param ui UI being used
-     * @param storage Current storage in use
+     * @param tasks Current {@link TaskList}
+     * @param ui {@link Ui} being used
+     * @param storage Current {@link Storage} in use
      * @throws IOException Error with accessing file or file writer
      */
     @Override
@@ -34,7 +34,7 @@ public class DeleteCommand extends Command {
     /**
      * Tests Exit Command.
      *
-     * @return Whether command is an Exit Command.
+     * @return True if {@link Command} is an {@link ExitCommand}
      */
     @Override
     public boolean isExit() {

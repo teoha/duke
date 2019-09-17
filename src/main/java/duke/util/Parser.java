@@ -119,10 +119,10 @@ public class Parser {
 
     /**
      * Reads and makes sense of storage input. Returns a task to be placed in
-     * task list.
+     * {@link TaskList}.
      *
-     * @param info Information string provided by storage.
-     * @return Task parsed
+     * @param info Information string provided by {@link Storage}.
+     * @return {@link Task} parsed
      */
     public static Task parseStorage(String info) throws ParseException, UnknownStorageEntryException {
         String[] infoArr = info.split(Pattern.quote("|"));

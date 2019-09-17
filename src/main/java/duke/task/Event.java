@@ -9,7 +9,7 @@ public class Event extends Task {
     private Date end;
 
     /**
-     * Creates an event that comprises a start and end time.
+     * Creates an {@link Event} that comprises a start and end time.
      *
      * @param description Description of the event.
      * @param start Starting time of the event.
@@ -22,7 +22,7 @@ public class Event extends Task {
     }
 
     /**
-     * Returns the duration of the event separated by a dash.
+     * Returns the duration of the {@link Event} separated by a dash.
      *
      * @return A string representation of the duration of the event.
      */
@@ -55,7 +55,7 @@ public class Event extends Task {
     }
 
     /**
-     * Returns a description of the properties of the task.
+     * Returns a description of the properties of the {@link Task}.
      *
      * @return a string representation of the task.
      */

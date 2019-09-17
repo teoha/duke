@@ -8,10 +8,10 @@ import java.io.IOException;
 /**
  * Executes command to list all tasks in tasklist.
  *
- * @param tasks Current list of tasks
- * @param ui UI being used
- * @param storage Current storage in use
- * @throws IOException Error with accessing file or file writer
+ * @param tasks Current {@link TaskList}
+ * @param ui {@link Ui} being used
+ * @param storage Current {@link Storage} in use
+ * @throws IOException Error with accessing file or {@link java.io.FileWriter}
  */
 public class ListCommand extends Command {
     @Override
@@ -23,9 +23,9 @@ public class ListCommand extends Command {
     }
 
     /**
-     * Tests if command is exit command.
+     * Tests if {@link Command} is {@link ExitCommand}
      *
-     * @return Returns true if command is exif command
+     * @return Return true if {@link Command} is {@link ExitCommand}
      */
     @Override
     public boolean isExit() {

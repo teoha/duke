@@ -24,13 +24,13 @@ public class AddEventCommand extends AddCommand {
     }
 
     /**
-     * Adds an event into task list and saves the task list
+     * Adds an {@link Event} into {@link TaskList} and saves the {@link TaskList}
      *  into the external file.
      *
-     * @param tasks Current list of tasks
-     * @param ui UI being used
-     * @param storage Current storage in use
-     * @throws IOException Error with accessing file or file writer
+     * @param tasks Current {@link TaskList}
+     * @param ui {@link Ui} being used
+     * @param storage Current {@link Storage} in use
+     * @throws IOException Error with accessing file or {@link java.io.FileWriter}
      * @throws EmptyDescriptionException Error when no description is provided
      * @throws ParseException Error when incorrect format for date is used
      */

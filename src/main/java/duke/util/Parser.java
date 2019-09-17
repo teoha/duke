@@ -118,7 +118,7 @@ public class Parser {
     }
 
     /**
-     * Reads and makes sense of storage input. Returns a task to be placed in
+     * Reads and makes sense of {@link Storage} input. Returns a task to be placed in
      * {@link TaskList}.
      *
      * @param info Information string provided by {@link Storage}.

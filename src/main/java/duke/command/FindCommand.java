@@ -46,7 +46,7 @@ public class FindCommand extends Command {
     }
 
     /**
-     * Tests if {@link Command} is {@link ExitCommand}
+     * Tests if {@link Command} is {@link ExitCommand}.
      *
      * @return Return true if {@link Command} is {@link ExitCommand}
      */

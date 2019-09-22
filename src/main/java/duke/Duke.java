@@ -24,17 +24,6 @@ public class Duke {
     private Storage storage;
     private TaskList tasks;
     private Ui ui;
-    ScrollPane scrollPane;
-    VBox dialogContainer;
-    TextField userInput;
-    Button sendButton;
-    AnchorPane mainLayout;
-    Scene scene;
-    private Image userImage = new Image(this.getClass().getResourceAsStream("/images/DaUser.png"));
-    private Image dukeImage = new Image(this.getClass().getResourceAsStream("/images/DaDuke.png"));
-
-    public Duke() {
-    }
 
     /**
      * Main driver function for the program.

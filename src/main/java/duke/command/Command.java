@@ -17,7 +17,7 @@ public abstract class Command {
      * @param storage Current {@link Storage} in use
      * @throws IOException Error with accessing file or {@link java.io.FileWriter}
      * @throws EmptyDescriptionException Error when no description is provided
-     * @throws ParseException Error when incorrect format for date is used
+     * @throws ParseException Error when incorrect format for {@link java.util.Date} is used
      */
     public abstract void execute(TaskList tasks, Ui ui, Storage storage)
             throws IOException, EmptyDescriptionException, ParseException;

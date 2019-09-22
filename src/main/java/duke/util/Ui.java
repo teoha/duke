@@ -129,6 +129,30 @@ public class Ui {
     }
 
     /**
+     * Prints all {@link Task} in user's {@link TaskList}.
+     *
+     * @param tasks User's {@link TaskList}.
+     */
+    public void showList(TaskList tasks) {
+        for (int i = 0; i < tasks.listSize(); i++) {
+            this.showListElement(tasks.getByIndex(i), i);
+        }
+    }
+
+    /**
+     * Prints all {@link Task} in user's {@link TaskList} order of
+     * priority. Lower Priority {@link Task} are ordered higher on the
+     * list.
+     *
+     * @param tasks User's {@link TaskList}.
+     */
+    public void showPriorityList(TaskList tasks) {
+        for (int i = 0; i < tasks.listSize(); i++) {
+            this.showPriorityListElement(tasks.getByIndex(i), i);
+        }
+    }
+
+    /**
      * Reads the command in the next line a user inputs.
      *
      * @return String representation of the command in the next line.

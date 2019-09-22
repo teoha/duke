@@ -32,7 +32,7 @@ public class AddEventCommand extends AddCommand {
      * @param storage Current {@link Storage} in use
      * @throws IOException Error with accessing file or {@link java.io.FileWriter}
      * @throws EmptyDescriptionException Error when no description is provided
-     * @throws ParseException Error when incorrect format for date is used
+     * @throws ParseException Error when incorrect format for {@link Date} is used
      */
     @Override
     public void execute(TaskList tasks, Ui ui, Storage storage)

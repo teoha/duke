@@ -6,12 +6,6 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class TaskListTest {
-    @Test
-    void getTasks() {
-        TaskList taskList = new TaskList();
-        taskList.add(new ToDo("Test"));
-        taskList.getTasks();
-    }
 
     @Test
     void add() {

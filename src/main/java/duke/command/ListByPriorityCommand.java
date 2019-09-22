@@ -21,17 +21,11 @@ public class ListByPriorityCommand extends Command {
      */
     @Override
     public void execute(TaskList tasks, Ui ui, Storage storage) {
-        List<Task> sortedList = new ArrayList<>();
-        for (Task task : tasks.getTasks()) {
-            if (task.getPriority() > 0) {
-                sortedList.add(task);
-            }
-        }
-        sortedList.sort((t1,t2) -> t1.getPriority() - t2.getPriority());
+        TaskList sortedList = tasks.getSortedList();
+
         ui.showPriorityListHeader();
-        for (int i = 0; i < sortedList.size(); i++) {
-            ui.showPriorityListElement(sortedList.get(i), i);
-        }
+
+        ui.showPriorityList(sortedList);
     }
 
     /**

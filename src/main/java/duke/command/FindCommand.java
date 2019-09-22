@@ -3,18 +3,16 @@ package duke.command;
 import duke.util.Storage;
 import duke.util.TaskList;
 import duke.util.Ui;
-import duke.exception.EmptyDescriptionException;
 import duke.task.Task;
-import java.io.IOException;
-import java.text.ParseException;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class FindCommand extends Command {
-    private String keyword;
+    private String keyString;
 
-    public FindCommand(String keyword) {
-        this.keyword = keyword;
+    public FindCommand(String keyString) {
+        this.keyString = keyString;
     }
 
     /**
@@ -27,12 +25,7 @@ public class FindCommand extends Command {
      */
     @Override
     public void execute(TaskList tasks, Ui ui, Storage storage) {
-        List<Task> relevantList = new ArrayList<>();
-        for (int i = 0; i < tasks.listSize(); i++) {
-            if (tasks.getByIndex(i).getDescription().contains(keyword)) {
-                relevantList.add(tasks.getByIndex(i));
-            }
-        }
+        TaskList relevantList = tasks.getRelevantList(keyString);
 
         if (relevantList.isEmpty()) {
             ui.showFindFailedMessage();
@@ -40,9 +33,8 @@ public class FindCommand extends Command {
         }
 
         ui.showFindMessage();
-        for (int i = 0; i < relevantList.size(); i++) {
-            ui.showListElement(relevantList.get(i), i);
-        }
+
+        ui.showList(relevantList);
     }
 
     /**

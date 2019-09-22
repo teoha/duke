@@ -19,8 +19,13 @@ public class TaskList {
         this.tasks = new ArrayList<>();
     }
 
-    public List<Task> getTasks() {
-        return tasks;
+    /**
+     * Returns true if {@link TaskList} is empty.
+     *
+     * @return Returns true if {@link TaskList} is empty.
+     */
+    public boolean isEmpty() {
+        return tasks.isEmpty();
     }
 
     /**
@@ -59,5 +64,36 @@ public class TaskList {
      */
     public int listSize() {
         return tasks.size();
+    }
+
+    /**
+     * Returns {@link TaskList} of {@link Task} which description contains
+     * the user's key string.
+     *
+     * @param keyString User's input key string.
+     */
+    public TaskList getRelevantList(String keyString) {
+        TaskList relevantList = new TaskList();
+        for (int i = 0; i < this.listSize(); i++) {
+            if (this.getByIndex(i).containsKeyString(keyString)) {
+                relevantList.add(this.getByIndex(i));
+            }
+        }
+        return relevantList;
+    }
+
+    /**
+     * Returns {@link TaskList} of {@link Task} ordered by priority.
+     */
+    public TaskList getSortedList() {
+        ArrayList<Task> sortedList = new ArrayList<>();
+        for (int i = 0; i < this.listSize(); i++) {
+            if (this.getByIndex(i).getPriority() != -1) {
+                sortedList.add(this.getByIndex(i));
+            }
+        }
+        sortedList.sort((t1,t2) -> t1.getPriority() - t2.getPriority());
+
+        return new TaskList(sortedList);
     }
 }

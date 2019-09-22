@@ -84,6 +84,16 @@ public abstract class Task implements Comparable<Task> {
     }
 
     /**
+     * Returns true if {@link Task} description contains user's key string.
+     *
+     * @param keyString Key string user intends to find.
+     * @return Returns true if {@link Task} description contains user's key string.
+     */
+    public boolean containsKeyString(String keyString) {
+        return this.getDescription().contains(keyString);
+    }
+
+    /**
      * Returns string representation of properties in the {@link Task}.
      *
      * @return string representation of task properties.

@@ -4,7 +4,7 @@
 Duke is a task management system. This desktop application allows a single user to add and remove tasks; save/load tasks into/from a separate file; find tasks by input string; update priorities of items; list all tasks the user has saved; list all tasks by order of priority. This application uses the command line interface; this means you operate the application by typing commands in to the Command Box.
 
 This is what Duke looks like:
-![Duke Screenshot](Ui.PNG)
+![Duke Screenshot](Ui.png)
 
 ## About this document
 This document shows all the features of **Duke**
